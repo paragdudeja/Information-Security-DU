@@ -3,10 +3,15 @@ import operator
 T = 'ETAOINSHRDLCUMWFGYPBVKJXQZ'
 
 def get_key(iteration: int, ch: str) -> int:
-    T[iteration] - ord(ch)
+    return ord(ch) - ord(T[iteration]) 
 
+def decryption(message,key):
+    decrypted_text = ""
+    for ch in message:
+        decrypted_text += chr( ((ord(ch) - ord('A') - key )%26)+ord('A') ) 
+    return decrypted_text
 
-def encrypt(message: str) -> str:
+def freq_attack(message: str) -> str:
     frequency = {}
     for ch in message:
         if ch in frequency:
@@ -15,10 +20,16 @@ def encrypt(message: str) -> str:
             frequency[ch] = 1
 
     sorted_x = sorted(frequency.items(), key=operator.itemgetter(1), reverse=True)
-    
-    key = ord(sorted_x[0]) - ord('E')
+
     for i in range(11):
-        key = get_key(i, sorted_x[i])
+        if i == len(sorted_x):
+            break
+        key = get_key(i, sorted_x[i][0])
+        print(key)
+        print(decryption(message,key))
+    
 
 if __name__=='__main__':
-    encrypt('hello world')
+    words = 'B TJNQMF NFTTBHF'.split(' ')
+    for word in words:
+        freq_attack(word)
