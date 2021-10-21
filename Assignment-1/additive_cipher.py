@@ -19,6 +19,7 @@ def encrypt(message):
             encrypted_text += " "
     return encrypted_text
     
+
 def decrypt(message):
     """
     Returns the decrypted text decrypted using additive cipher
@@ -38,6 +39,7 @@ def decrypt(message):
             decrypted_text += " "
 
     return decrypted_text
+
 
 def main():
     message = input("Enter text message to encrypt: ")
