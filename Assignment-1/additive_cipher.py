@@ -1,5 +1,16 @@
 k = 3
-def encryption(message):
+
+def encrypt(message):
+    """
+    Returns the encrypted text encrypted using additive cipher
+
+            Parameters:
+                    message (str): An input string
+
+            Returns:
+                    encrypted_text (str): additive cipher encrypted string
+    
+    """
     encrypted_text = ""
     for ch in message:
         if not ch.isspace():
@@ -8,7 +19,17 @@ def encryption(message):
             encrypted_text += " "
     return encrypted_text
     
-def decryption(message):
+def decrypt(message):
+    """
+    Returns the decrypted text decrypted using additive cipher
+
+            Parameters:
+                    message (str): An input string
+
+            Returns:
+                    decrypted_text (str): additive cipher decrypted string
+    
+    """
     decrypted_text = ""
     for ch in message:
         if not ch.isspace():
@@ -20,13 +41,13 @@ def decryption(message):
 
 def main():
     message = input("Enter text message to encrypt: ")
-    encrypted_message = encryption(message)
+    encrypted_message = encrypt(message)
     print(f"Encrypted message: {encrypted_message}")
     message = input("Enter text message to decrypt (press enter to decrypt the above result): ")
     if message:
-        print(decryption(message))
+        print(decrypt(message))
     else:
-        print(decryption(encrypted_message))
+        print(decrypt(encrypted_message))
     
 if __name__ == "__main__":
     main()

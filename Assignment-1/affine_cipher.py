@@ -1,7 +1,17 @@
 a = 7
 b = 6
 
-def encryption(message: str) -> str:
+def encrypt(message: str) -> str:
+    """
+    Returns the encrypted text encrypted using affine cipher
+
+            Parameters:
+                    message (str): An input string
+
+            Returns:
+                    encrypted_text (str): affine cipher encrypted string
+    
+    """
     encrypted_text = ""
     for ch in message:
         if not ch.isspace():
@@ -10,7 +20,18 @@ def encryption(message: str) -> str:
             encrypted_text += " "
     return encrypted_text
 
-def decryption(message: str) -> str:
+
+def decrypt(message: str) -> str:
+    """
+    Returns the decrypted text decrypted using affine cipher
+
+            Parameters:
+                    message (str): An input string
+
+            Returns:
+                    decrypted_text (str): affine cipher decrypted string
+    
+    """
     decrypted_text = ""
     multi_inverse = 0
 
@@ -26,12 +47,17 @@ def decryption(message: str) -> str:
 
     return decrypted_text
 
-if __name__=='__main__':
+
+def main():
     message = input("Enter text message to encrypt: ")
-    encrypted_message = encryption(message)
+    encrypted_message = encrypt(message)
     print(f"Encrypted message: {encrypted_message}")
     message = input("Enter text message to decrypt (press enter to decrypt the above result): ")
     if message:
-        print(decryption(message))
+        print(decrypt(message))
     else:
-        print(decryption(encrypted_message))
+        print(decrypt(encrypted_message))
+
+
+if __name__=='__main__':
+    main()
