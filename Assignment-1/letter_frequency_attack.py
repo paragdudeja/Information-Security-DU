@@ -61,7 +61,6 @@ def freq_attack(message: str):
         if i == len(sorted_frequency):
             break
         key = get_key(i, sorted_frequency[i][0])
-        print(key)
         print(decryption(message, key))
     
 
